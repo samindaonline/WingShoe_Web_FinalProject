@@ -15,8 +15,12 @@
                 <div class="navleft">
                     <div class="account">
                         <div class="accgroup">
-                            <div class="accicon"></div>
-                            <div class="accname"></div>
+                            <div class="accicon">
+                                <img src="assets/icon/user.png" alt="user">
+                            </div>
+                            <div class="accname">
+                                <a href="#">Login/Register</a>
+                            </div>
                         </div>
                     </div>
                     <div class="cart">
