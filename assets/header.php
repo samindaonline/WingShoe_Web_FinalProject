@@ -19,7 +19,7 @@
                                 <img src="assets/icon/user.png" alt="user">
                             </div>
                             <div class="accname">
-                                <a href="#">Login/Register</a>
+                                <a href="login.php">Login/Register</a>
                             </div>
                         </div>
                     </div>
