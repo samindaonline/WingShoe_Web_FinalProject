@@ -5,21 +5,24 @@
     <link rel="stylesheet" href="css_files/login.css">
 </head>
 <body>
-    <div class="background">
-        <!-- <div class="shape"></div>
-        <div class="shape"></div> -->
-    </div>
-    <form>
+        <?php
+            include "assets/header.php";
+        ?>
+    <?php /* require "php_files/php_login.php"; */ ?>
+    <form method="post" action="">
         <h3>Login Here</h3>
 
         <label for="username">Username</label>
-        <input type="text" placeholder="Email" id="username">
+        <input type="text" placeholder="username" id="username" name="username">
 
         <label for="password">Password</label>
-        <input type="password" placeholder="Password" id="password">
+        <input type="password" placeholder="Password" id="password" name="password">
 
-        <input type="submit" value="Login" class="button">
-
+        <input type="submit" value="Login" class="button" name="login">
     </form>
+    
+    <?php
+        loginform();
+    ?>
 </body>
 </html>

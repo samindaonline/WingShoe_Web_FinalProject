@@ -1,5 +1,6 @@
 <!DOCTYPE html>
         <link rel="stylesheet" href="css_files/nav.css">
+        <?php require "php_files/php_login.php"; ?>
     <header>
         <div class="container">
             <nav>
@@ -15,12 +16,13 @@
                 <div class="navleft">
                     <div class="account">
                         <div class="accgroup">
-                            <div class="accicon">
+                            <?php logged(); ?>
+                            <!-- <div class="accicon">
                                 <img src="assets/icon/user.png" alt="user">
                             </div>
                             <div class="accname">
                                 <a href="login.php">Login/Register</a>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     <div class="cart">
