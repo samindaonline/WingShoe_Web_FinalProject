@@ -28,21 +28,22 @@
     }
 
     function logged(){
-        echo    '<div class="accicon"><img src="assets/icon/user.png" alt="user"></div>
-                <div class="accname"><a href="login.php">Login/Register</a></div>';
 
+        session_start();
+        if(!empty($_SESSION['user'])){
 
-            session_start();
-            if(!empty($_SESSION['user'])){
-                echo 'Welcome '.$_SESSION['user'];
+            /* <a href="home.php?id=logout">Logout</a> */
+            echo    '<div class="accicon"><img src="assets/icon/user.png" alt="user"></div>
+                <div class="accname"><a href="index.php?id=logout">'.$_SESSION['user'].'</a></div>';
 
-                /* <a href="home.php?id=logout">Logout</a> */
-
-                if(isset($_GET['id'])and $_GET['id']=="logout"){
-                    $_SESSION['user']="";
-                    header("location:index.php");
-                }
-
-    }}
+            if(isset($_GET['id'])and $_GET['id']=="logout"){
+                $_SESSION['user']="";
+                header("location:index.php");
+            }
+        } else{
+            echo    '<div class="accicon"><img src="assets/icon/user.png" alt="user"></div>
+            <div class="accname"><a href="login.php">Login/Register</a></div>';
+        }
+    }
 
 ?>
