@@ -3,23 +3,25 @@
     $loginstatus="";
 
     function loginform(){
-        require "connection.php";
 
         if(isset($_POST['login'])){
+            require "connection.php";
             $username=$_POST['username'];
             $password=$_POST['password'];
 
-            $sql_fetch="SELECT * FROM user WHERE userName='$username' AND password='$password'";
+            $sql_fetch="SELECT * FROM users WHERE username='$username' AND password='$password'";
             $result=mysqli_query($con,$sql_fetch); 
 
             while($row=mysqli_fetch_assoc($result)){
-                echo '<div id="login_result">'."Username: ".$row['userName'];
+                echo '<div id="login_result">'."Username: ".$row['username'];
+                $usertype=$row['usertype'];
             }
-            echo 'adfa';
 
             if(mysqli_num_rows($result)>0){
                 session_start();
                 $_SESSION['user']=$username;
+                $_SESSION['usertype']=$usertype;
+                
                 header('location:index.php');
             }else{
                 echo '<div id="login_result" style="color:red;">'."Incorrect username or password!".'</div>';

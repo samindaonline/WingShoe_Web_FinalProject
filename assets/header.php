@@ -1,6 +1,7 @@
 <!DOCTYPE html>
         <link rel="stylesheet" href="css_files/nav.css">
-        <?php require "php_files/php_login.php"; ?>
+        <?php require "php_files/php_login.php"; require "php_files/connection.php";  ?>
+
     <header>
         <div class="container">
             <nav>
@@ -8,7 +9,7 @@
                 <div class="navlist">
                     <ul>
                         <li><a href="index.php">Home</a></li>
-                        <li><a href="#">Shop</a></li>
+                        <li><a href="shop.php">Shop</a></li>
                         <li><a href="#">About</a></li>
                         <li><a href="#">Contact</a></li>     
                     </ul>
