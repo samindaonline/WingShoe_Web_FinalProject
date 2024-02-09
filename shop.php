@@ -3,7 +3,7 @@
 
 <head>
     <title>Shop</title>
-
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet" type='text/css'>
     <link rel="stylesheet" href="css_files/shop.css">
 </head>
 
@@ -14,7 +14,16 @@
     ?>
     <div class="maincontent">
         <section id="shopheading">
-            <h1>Shop</h1>
+            <div class="hcol1">
+                <h1>Shop</h1>
+            </div>
+
+            <div class="hcol2">
+                <div class="search-box">
+                    <button class="btn-search"><i class="fa fa-search"></i></button>
+                    <input type="text" class="input-search" placeholder="Type to Search...">
+                </div>
+            </div>
         </section>
 
         <section id="shopcontainer">
