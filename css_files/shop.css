@@ -1,47 +1,114 @@
-#shopheading{
-    height: 100px;
-    /* background-color: blue;  */
+#shopheading {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: blue; */
 }
 
-#shopcontainer{
-    display: flex;
+#shopcontainer {
+  display: flex;
+  flex-flow: wrap;
+  align-items: center;
+  justify-content: center;
 }
 
-#manageshopcontainer{
-    display: flex;
-    justify-content: center;
+#manageshopcontainer {
+  display: flex;
+  justify-content: space-evenly;
 }
 
-.filter-section{
-    width: 20%;
-    height: 500px;
-    /* background-color: aquamarine; */
+.product-card {
+  width: 220px;
 }
 
-.product-view{
-    /* width: 80%; */
-    height: 500px;
-    display: flex;
-    /* background-color: blue;  */
+.productrow {
+  margin: 10px;
 }
 
-.product-container{
-    width: 200px;
-    height: fit-content;
-    background-color: rgb(206, 206, 206);
-    padding: 10px;
-    margin: 10px 10px 0 10px;
+.box_main {
+  width: auto;
+  background-color: #ffffff;
+  height: auto;
+  padding: 20px;
+  box-shadow: 0px 0 30px 10px #f0f0f0;
+  /* margin-bottom: 20px; */
+  /* overflow: hidden; */
 }
 
-.product-img{
-    width: 100%;
+.shirt_text {
+  width: 100%;
+  font-size: 20px;
+  color: #30302e;
+  text-align: center;
+  font-weight: bold;
+  padding-bottom: 5px;
 }
 
-.product-name{
-    margin: 10px;
-    overflow: hidden;
+.price_text {
+  width: 100%;
+  font-size: 16px;
+  color: rgb(0, 89, 255);
+  text-align: center;
+  margin: 0px;
 }
 
-.product-price{
-    margin: 0 10px 10px 10px;
+.tshirt_img {
+  width: 100%;
+  text-align: center;
+  margin: 0 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.tshirt_img img {
+  /* flex-shrink: 0; */
+  min-width: 100%;
+  min-height: 100%;
+  margin: 10% 10%;
+}
+
+.btn_main {
+  width: 100%;
+  display: flex;
+}
+
+.buy_bt {
+  float: left;
+  width: 100%;
+}
+
+.buy_bt a {
+  width: 100%;
+  font-size: 16px;
+  color: rgb(0, 89, 255);
+  background-color: transparent;
+  text-align: right;
+  font-weight: bold;
+}
+
+.buy_bt a:hover {
+  background-color: transparent;
+  color: #262626;
+}
+
+.seemore_bt {
+  width: 100%;
+  float: right;
+  text-align: right;
+}
+
+.seemore_bt a {
+  width: 100%;
+  font-size: 16px;
+  color: #262626;
+  background-color: transparent;
+  text-align: right;
+}
+
+.seemore_bt a:hover {
+  background-color: transparent;
+  color: rgb(0, 89, 255);
 }
