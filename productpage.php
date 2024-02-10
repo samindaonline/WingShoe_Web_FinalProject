@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 
@@ -75,7 +76,49 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js_files/productpage.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        var links = document.querySelectorAll('li a');
+        var size;
+        links.forEach(function(link) {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+                size = this.id;
+                console.log('Clicked link id:', size);
+            });
+        });
 
+        $(document).ready(function() {
+            $('#addtocart').click(function(e) {
+                e.preventDefault();
+                var productId = $(this).data('product-id');
+                var quantity = $('#qty').val();
+                console.log(productId);
+                console.log(quantity);
+                console.log(size);
+                $.ajax({
+                    type: 'POST',
+                    url: 'php_files/php_addtocart.php',
+                    data: {
+                        productId: productId,
+                        size: size,
+                        quantity: quantity
+                    },
+                    success: function(response) {
+                        if (response === 'success') {
+                            alert('Item added to cart successfully!');
+                        } else if (response === 'error') {
+                            window.location.href = 'login.php';
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr.responseText);
+                        alert('Failed to add item to cart. Please try again.');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>

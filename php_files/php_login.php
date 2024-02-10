@@ -31,7 +31,7 @@
 
     function logged(){
 
-        session_start();
+        
         if(!empty($_SESSION['user'])){
 
             /* <a href="home.php?id=logout">Logout</a> */

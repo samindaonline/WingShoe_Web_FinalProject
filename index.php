@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -33,7 +35,10 @@
                     <h4>Elevate your style with our featured products.</h4>
                 </div>
                 <div class="featured-wrap">
-                    <div class="fcard">
+                    <?php require 'php_files/php_shop.php';
+                    featuredproduct();
+                    ?>
+                    <!-- <div class="fcard">
                         <div class="badge">Hot</div>
                         <div class="product-tumb">
                             <img src="https://i.imgur.com/xdbHo4E.png" alt="">
@@ -41,8 +46,8 @@
                         <div class="product-details">
                             <span class="product-catagory">Women,bag</span>
                             <h4><a href="">Women leather bag</a></h4>
-                            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, possimus nostrum!</p> -->
-                            <div class="product-bottom-details">
+                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, possimus nostrum!</p> -->
+                    <!-- <div class="product-bottom-details">
                                 <div class="product-price"><small>$96.00</small>$230.99</div>
                             </div>
                         </div>
@@ -52,7 +57,7 @@
                     </div>
                     <div class="fcard">
 
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </section>

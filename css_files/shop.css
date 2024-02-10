@@ -57,7 +57,7 @@
   margin: 0px;
 }
 
-.tshirt_img {
+.product-img {
   width: 100%;
   text-align: center;
   margin: 0 0px;
@@ -67,7 +67,7 @@
   overflow: hidden;
 }
 
-.tshirt_img img {
+.product-img img {
   /* flex-shrink: 0; */
   min-width: 100%;
   min-height: 100%;

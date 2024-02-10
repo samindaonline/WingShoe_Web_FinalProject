@@ -68,7 +68,7 @@ function shop()
             <div class="box_main">
                 <h4 class="shirt_text">' . $productname . '</h4>
                 <p class="price_text">Price <span style="color: #262626;">Rs.' . $price . '/-</span></p>
-                <div class="tshirt_img"><img src="' . $imgmain . '"></div>
+                <div class="product-img"><img src="' . $imgmain . '"></div>
                 <div class="btn_main">
                     <div class="buy_bt"><a href="#">Add Cart</a></div>
                     <div class="seemore_bt"><a href="productpage.php?productid=' . $productid . '">See More</a></div>
@@ -156,9 +156,9 @@ function productview()
 
             if ($qty >= 0) {
                 $sumofshoes = $sumofshoes + $qty;
-                $qryparam = array('productid' => $productid, 'size' => $size);
-                $quaryString = http_build_query($qryparam);
-                $sizesitem .= '<li><a href="productpage.php?' . $quaryString . '">' . $size . '</a></li>';
+                /* $qryparam = array('productid' => $productid, 'size' => $size);
+                $quaryString = http_build_query($qryparam); */
+                $sizesitem .= '<li><a href="" id="' . $size . '">' . $size . '</a></li>';
             }
         }
         if ($sumofshoes > 0) {
@@ -204,7 +204,7 @@ function productview()
                                 </ul>
                             </div>
                             <div class="mt-2">
-                                <a href="" class="btn btn-primary"> <i class="fa fa-shopping-cart"></i> Add To Cart</a>
+                                <a href="" class="btn btn-primary" id="addtocart" data-product-id="' . $productid . '"> <i class="fa fa-shopping-cart"></i> Add To Cart</a>
                             </div>
                             <div class="mt-3">
                                 <h5 class="mb-0">Small Description</h5>
@@ -217,5 +217,45 @@ function productview()
                 </div>
             </div>
         </div>';
+    }
+}
+
+function featuredproduct()
+{
+    include "php_files/connection.php";
+    $count = 0;
+    while ($count < 3) {
+
+        $random_number = mt_rand(00000, 00030);
+
+        $random_number = sprintf('%05d', $random_number);
+
+        $result = mysqli_query($con, "SELECT * FROM products WHERE product_id=$random_number");
+
+        $data = mysqli_fetch_assoc($result);
+
+        $productid = $data['product_id'];
+        $productname = $data['name'];
+        $category = $data['category'];
+        $imgmain = $data['photo2'];
+        $price = $data['price'];
+        $oldprice = floatval($data['price']) + (floatval($data['price']) * 0.1);
+
+        echo '<div class="fcard">
+                    <div class="badge">Hot</div>
+                    <div class="product-tumb">
+                        <img src="' . $imgmain . '" alt="">
+                    </div>
+                    <div class="product-details">
+                        <span class="product-catagory">' . $category . '</span>
+                        <h4><a href="productpage.php?productid=' . $productid . '">' . $productname . '</a></h4>
+                        <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, possimus nostrum!</p> -->
+                        <div class="product-bottom-details">
+                            <div class="product-price"><small>Rs. ' . $oldprice . '.00</small>Rs.' . $price . '</div>
+                        </div>
+                    </div>
+                </div>';
+
+        $count = $count + 1;
     }
 }
