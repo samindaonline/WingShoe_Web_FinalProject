@@ -21,13 +21,14 @@
             <div class="hcol2">
                 <div class="search-box">
                     <button class="btn-search"><i class="fa fa-search"></i></button>
-                    <input type="text" class="input-search" placeholder="Type to Search...">
+                    <input type="text" id="searchInput" class="input-search" placeholder="Type to Search...">
                 </div>
             </div>
         </section>
 
         <section id="shopcontainer">
-            <div class="productrow">
+            <?php shop(); ?>
+            <!-- <div class="productrow">
                 <div class="product-card">
                     <div class="box_main">
                         <h4 class="shirt_text">Man T -shirt</h4>
@@ -39,10 +40,31 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
         </section>
     </div>
+    <!-- <script src="js_files/shop.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#searchInput").on("input", function() {
+                var query = $(this).val();
+                if (query !== "") {
+                    $.ajax({
+                        url: "php_files/php_search.php",
+                        method: "POST",
+                        data: {
+                            query: query
+                        },
+                        success: function(data) {
+                            $("#shopcontainer").html(data);
+                        },
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

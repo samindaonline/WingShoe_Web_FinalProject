@@ -1,58 +1,39 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>image upload</title>
-    </head>
-    <body>
-        <form action="" method="post" enctype="multipart/form-data">
-            <input type="file" name="file" id="file">
-            <input type="submit" value="submit" name="submit">
-        </form>
-        <?php
-            if(isset($_POST['submit'])){
-                $file=$_FILES['file'];
-                print_r($file);
 
-                $fileName=$file['name'];
-                $fileTmpName=$file['tmp_name'];
-                $fileSize=$file['size'];
-                $fileError=$file['error'];
-                $fileType=$file['type'];
+<head>
+    <title>image upload</title>
+</head>
 
-                echo $fileName;
+<body>
+    <form action="" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" id="file">
+        <input type="submit" value="submit" name="submit">
+    </form>
+    <?php
+    include "php_files/connection.php";
 
-                $fileExt = explode('.',$fileName);
-                $fileActualExt=strtolower(end($fileExt));
+    $productid = '00001';
 
-                $allowed = array('jpg','jpeg','png');
-                
-                $imgName;
+    $sizeresult = mysqli_query($con, "SELECT * FROM stock WHERE product_id=$productid");
+    //$sizes = mysqli_fetch_array($sizeresult);
+    //print_r($sizes);
+    //echo '<br>';
+    //var_dump($sizes);
+    $sumofshoes = 0;
+    while ($sizes = mysqli_fetch_array($sizeresult)) {
 
-                if(in_array($fileActualExt,$allowed)){
-                    $fileNameNew = uniqid('',true).".".$fileActualExt;
-                    $fileDestination = 'assets/images/shoes/'.$fileNameNew;
-                    move_uploaded_file($fileTmpName,$fileDestination);
-                    $imgName=$fileNameNew;
-                }
+        $qty = intval($sizes['stock_quantity']);
+        $size = intval($sizes['size_id']);
+        if ($qty >= 0) {
+            $sumofshoes = $sumofshoes + $qty;
+            echo 'Available ' . $size . ' ' . $qty . '<br>';
+        }
+    }
+    if ($sumofshoes > 0) {
+        echo 'instock ' . $sumofshoes;
+    }
+    ?>
+</body>
 
-                $folderPath = "assets/images/shoes/";
-                $imageName = $imgName; // Replace with the actual image name
-
-                // Construct the full path to the image
-                $filePath = $folderPath . $imageName;
-
-                // Check if the file exists before attempting to delete
-                if (file_exists($filePath)) {
-                    // Attempt to delete the file
-                    if (unlink($filePath)) {
-                        echo "Image '$imageName' deleted successfully.";
-                    } else {
-                        echo "Error: Unable to delete the image.";
-                    }
-                } else {
-                    echo "Error: Image '$imageName' not found.";
-                }
-            }
-        ?>
-    </body>
 </html>

@@ -13,24 +13,21 @@
 <body>
     <?php
     include "assets/header.php";
+    require "php_files/php_shop.php"
     ?>
     <div class="maincontent">
-        <div class="py-3 py-md-5 bg-light">
+        <?php productview(); ?>
+        <!-- <div class="py-3 py-md-5 bg-light">
             <div class="container">
                 <div class="row">
                     <div class="col-md-5 mt-3">
-                        <!-- <div class="bg-white border">
-                            <img src="assets/images/noimg.jpg" class="w-100" alt="Img">
-                        </div> -->
                         <div class="carousel-container">
                             <div class="carousel-slide">
                                 <img src="assets/images/noimg.jpg" alt="Image 1">
                                 <img src="assets/images/noimg.jpg" alt="Image 2">
-                                <img src="assets/images/noimg.jpg" alt="Image 3">
                             </div>
                         </div>
                     </div>
-
                     <div class="col-md-7 mt-3">
                         <div class="product-view">
                             <h4 class="product-name">
@@ -74,12 +71,10 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
-
-        </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="js_files/productpage.js"></script>
+            </div> -->
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js_files/productpage.js"></script>
 
 </body>
 
