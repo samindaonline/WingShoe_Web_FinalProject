@@ -29,23 +29,8 @@
 
         <section id="shopcontainer">
             <?php shop(); ?>
-            <!-- <div class="productrow">
-                <div class="product-card">
-                    <div class="box_main">
-                        <h4 class="shirt_text">Man T -shirt</h4>
-                        <p class="price_text">Price <span style="color: #262626;">$ 30</span></p>
-                        <div class="product-img"><img src="assets/images/noimg.jpg"></div>
-                        <div class="btn_main">
-                            <div class="buy_bt"><a href="#">Add Cart</a></div>
-                            <div class="seemore_bt"><a href="#">See More</a></div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-
         </section>
     </div>
-    <!-- <script src="js_files/shop.js"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(document).ready(function() {
@@ -59,7 +44,8 @@
                             query: query
                         },
                         success: function(data) {
-                            $("#shopcontainer").html(data);
+                            $("#shopcontainer").html(data); 
+                            
                         },
                     });
                 }

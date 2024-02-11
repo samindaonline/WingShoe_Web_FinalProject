@@ -289,7 +289,7 @@ function cart()
                     </th>
                     <td class="border-0 align-middle"><strong>' . $price . '</strong></td>
                     <td class="border-0 align-middle"><strong>' . $quantity . '</strong></td>
-                    <td class="border-0 align-middle"><a href="#" class="text-dark"><i class="fa fa-trash"></i></a></td>
+                    <td class="border-0 align-middle"><a href="#" id="removeitem" data-transid="' . $transid . '" class="text-dark"><i class="fa fa-trash"></i></a></td>
                 </tr>';
         }
     }

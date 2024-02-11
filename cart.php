@@ -36,13 +36,39 @@
                         </th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="cartitems">
                     <?php cart(); ?>
                 </tbody>
             </table>
 
         </section>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#removeitem").click(function(e) {
+                e.preventDefault();
+                var transId = $(this).data('transid');
+                if (transId !== "") {
+                    $.ajax({
+                        url: "php_files/php_removecart.php",
+                        method: "POST",
+                        data: {
+                            transId: transId
+                        },
+                        success: function(response) {
+
+                            var newCount = parseInt($('.cartcount').text()) - 1;
+                            $('.cartcount').text(newCount);
+                            $('#cartitems').html(response);
+                            alert('Item Removed from cart successfully!');
+
+                        },
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

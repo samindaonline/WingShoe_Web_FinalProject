@@ -1,7 +1,5 @@
 <?php
 
-/*  */
-
 if (isset($_POST['query'])) {
     include 'connection.php';
     $search = $_POST['query'];
