@@ -53,13 +53,18 @@ function logged()
 function cartcount()
 {
     require 'connection.php';
-    $username = $_SESSION['user'];
-    $sql = "SELECT * FROM cart_items WHERE username='$username'";
 
-    $result = mysqli_query($con, $sql);
     $numofrows = 0;
-    if ($result) {
-        $numofrows = mysqli_num_rows($result);
+    if (!empty($_SESSION['user'])) {
+        $username = $_SESSION['user'];
+
+        $sql = "SELECT * FROM cart_items WHERE username='$username'";
+        $result = mysqli_query($con, $sql);
+
+
+        if ($result) {
+            $numofrows = mysqli_num_rows($result);
+        }
     }
 
     echo '<div class="wrapcart"><span id="cartcount" class="cartcount">' . $numofrows . '</span></div>

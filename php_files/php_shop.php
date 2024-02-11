@@ -2,7 +2,7 @@
 
 function addshoes()
 {
-    require "php_files/connection.php";
+    require "connection.php";
     if (isset($_POST['save'])) {
         $productId = $_POST['product_id'];
         $product_name_entry = $_POST['name'];
