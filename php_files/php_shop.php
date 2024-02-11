@@ -265,12 +265,12 @@ function cart()
     if (!empty($_SESSION['user'])) {
         include 'connection.php';
         $username = $_SESSION['user'];
-        $result = mysqli_query($con, "SELECT c.product_id, p.name,p.category, p.price, c.quantity, c.size_id, p.photo2 from cart_items c,products p Where c.product_id=p.product_id AND c.username='$username'");
+        $result = mysqli_query($con, "SELECT c.transactionId,c.product_id, p.name,p.category, p.price, c.quantity, c.size_id, p.photo2 from cart_items c,products p Where c.product_id=p.product_id AND c.username='$username'");
 
         while ($data = mysqli_fetch_array($result)) {
 
             $productid = $data['product_id'];
-
+            $transid = $data['transactionId'];
             $productname = $data['name'];
             $category = $data['category'];
             $price = $data['price'];
