@@ -82,7 +82,9 @@
         var size;
         links.forEach(function(link) {
             link.addEventListener('click', function(event) {
-                event.preventDefault();
+                if (event.target.classList.contains('sizeitem')) {
+                    event.preventDefault();
+                }
                 size = this.id;
                 console.log('Clicked link id:', size);
             });
@@ -106,6 +108,8 @@
                     },
                     success: function(response) {
                         if (response === 'success') {
+                            var newCount = parseInt($('.cartcount').text()) + 1;
+                            $('.cartcount').text(newCount);
                             alert('Item added to cart successfully!');
                         } else if (response === 'error') {
                             window.location.href = 'login.php';

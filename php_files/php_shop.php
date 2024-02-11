@@ -158,7 +158,7 @@ function productview()
                 $sumofshoes = $sumofshoes + $qty;
                 /* $qryparam = array('productid' => $productid, 'size' => $size);
                 $quaryString = http_build_query($qryparam); */
-                $sizesitem .= '<li><a href="" id="' . $size . '">' . $size . '</a></li>';
+                $sizesitem .= '<li><a href="" class="sizeitem" id="' . $size . '">' . $size . '</a></li>';
             }
         }
         if ($sumofshoes > 0) {
@@ -257,5 +257,40 @@ function featuredproduct()
                 </div>';
 
         $count = $count + 1;
+    }
+}
+
+function cart()
+{
+    if (!empty($_SESSION['user'])) {
+        include 'connection.php';
+        $username = $_SESSION['user'];
+        $result = mysqli_query($con, "SELECT c.product_id, p.name,p.category, p.price, c.quantity, c.size_id, p.photo2 from cart_items c,products p Where c.product_id=p.product_id AND c.username='$username'");
+
+        while ($data = mysqli_fetch_array($result)) {
+
+            $productid = $data['product_id'];
+
+            $productname = $data['name'];
+            $category = $data['category'];
+            $price = $data['price'];
+            $quantity = $data['quantity'];
+            $size = $data['size_id'];
+            $imgmain = $data['photo2'];
+
+            echo '<tr>
+                    <th scope="row" class="border-0">
+                        <div class="p-2">
+                            <img src="' . $imgmain . '" alt="" width="70" class="img-fluid rounded shadow-sm">
+                            <div class="ml-3 d-inline-block align-middle">
+                                <h5 class="mb-0"> <a href="productpage.php?productid=' . $productid . '" class="text-dark d-inline-block align-middle">' . $productname . '</a></h5><span class="text-muted font-weight-normal font-italic d-block">Category: ' . $category . ' | Size: ' . $size . '</span>
+                            </div>
+                        </div>
+                    </th>
+                    <td class="border-0 align-middle"><strong>' . $price . '</strong></td>
+                    <td class="border-0 align-middle"><strong>' . $quantity . '</strong></td>
+                    <td class="border-0 align-middle"><a href="#" class="text-dark"><i class="fa fa-trash"></i></a></td>
+                </tr>';
+        }
     }
 }

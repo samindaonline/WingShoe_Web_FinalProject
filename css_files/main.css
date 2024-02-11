@@ -194,3 +194,10 @@
 .product-links a:hover {
   color: rgb(0, 89, 255);
 }
+
+.page-header{
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
